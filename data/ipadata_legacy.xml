@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="utf8"?>
+<data>
+  <phoneme_list>
+    <feature id="anterior">
+      <value id="anterior">
+        <base>p</base>
+        <base>b</base>
+        <base>t</base>
+        <base>d</base>
+        <base>ʈ</base>
+        <base>ɖ</base>
+        <base>m</base>
+        <base>ɱ</base>
+        <base>n</base>
+        <base>ɳ</base>
+        <base>ʙ</base>
+        <base>r</base>
+        <base>ɾ</base>
+        <base>ɽ</base>
+        <base>ɸ</base>
+        <base>β</base>
+        <base>f</base>
+        <base>v</base>
+        <base>θ</base>
+        <base>ð</base>
+        <base>s</base>
+        <base>z</base>
+        <base>ʂ</base>
+        <base>ʐ</base>
+        <base>ɬ</base>
+        <base>ɮ</base>
+        <base>ʋ</base>
+        <base>ɹ</base>
+        <base>ɻ</base>
+        <base>l</base>
+        <base>ɭ</base>
+        <base>ʘ</base>
+        <base>ǀ</base>
+        <base>ǃ</base>
+        <base>ǁ</base>
+        <base>ɓ</base>
+        <base>ɗ</base>
+        <base>ɺ</base>
+        <base>ʣ</base>
+        <base>ʦ</base>
+      </value>
+    </feature>
+    <feature id="aspirated">
+      <value id="aspirated">
+        <space>ʰ</space>
+      </value>
+    </feature>
+    <feature id="back">
+      <value id="back">
+        <base>k</base>
+        <base>g</base>
+        <base>q</base>
+        <base>ɢ</base>
+        <base>ŋ</base>
+        <base>ɴ</base>
+        <base>ʀ</base>
+        <base>x</base>
+        <base>ɣ</base>
+        <base>χ</base>
+        <base>ʁ</base>
+        <base>ħ</base>
+        <base>ʕ</base>
+        <base>ɰ</base>
+        <base>ʟ</base>
+        <base>ɯ</base>
+        <base>u</base>
+        <base>ɤ</base>
+        <base>o</base>
+        <base>ʌ</base>
+        <base>ɔ</base>
+        <base>ɑ</base>
+        <base>ɒ</base>
+        <base>ɠ</base>
+        <base>ʛ</base>
+        <base>ʍ</base>
+        <base>w</base>
+      </value>
+    </feature>
+    <feature id="central">
+      <value id="central">
+        <base>ɨ</base>
+        <base>ʉ</base>
+        <base>ɘ</base>
+        <base>ɵ</base>
+        <base>ə</base>
+        <base>ɜ</base>
+        <base>ɞ</base>
+        <diacritic>0x0308</diacritic>
+      </value>
+    </feature>
+    <feature id="consonantal">
+      <value id="consonantal">
+        <base>p</base>
+        <base>b</base>
+        <base>t</base>
+        <base>d</base>
+        <base>ʈ</base>
+        <base>ɖ</base>
+        <base>c</base>
+        <base>ɟ</base>
+        <base>k</base>
+        <base>g</base>
+        <base>q</base>
+        <base>ɢ</base>
+        <base>ʔ</base>
+        <base>m</base>
+        <base>ɱ</base>
+        <base>n</base>
+        <base>ɳ</base>
+        <base>ɲ</base>
+        <base>ŋ</base>
+        <base>ɴ</base>
+        <base>ʙ</base>
+        <base>r</base>
+        <base>ʀ</base>
+        <base>ɾ</base>
+        <base>ɽ</base>
+        <base>ɸ</base>
+        <base>β</base>
+        <base>f</base>
+        <base>v</base>
+        <base>θ</base>
+        <base>ð</base>
+        <base>s</base>
+        <base>z</base>
+        <base>ʃ</base>
+        <base>ʒ</base>
+        <base>ʂ</base>
+        <base>ʐ</base>
+        <base>ç</base>
+        <base>ʝ</base>
+        <base>x</base>
+        <base>ɣ</base>
+        <base>χ</base>
+        <base>ʁ</base>
+        <base>ħ</base>
+        <base>ʕ</base>
+        <base>h</base>
+        <base>ɦ</base>
+        <base>ɬ</base>
+        <base>ɮ</base>
+        <base>ʋ</base>
+        <base>ɹ</base>
+        <base>ɻ</base>
+        <base>j</base>
+        <base>ɰ</base>
+        <base>l</base>
+        <base>ɭ</base>
+        <base>ʎ</base>
+        <base>ʟ</base>
+        <base>ʘ</base>
+        <base>ǀ</base>
+        <base>ǃ</base>
+        <base>ǁ</base>
+        <base>ɓ</base>
+        <base>ɗ</base>
+        <base>ʄ</base>
+        <base>ɠ</base>
+        <base>ʛ</base>
+        <base>ɺ</base>
+        <base>ʣ</base>
+        <base>ʤ</base>
+        <base>ʦ</base>
+        <base>ʧ</base>
+      </value>
+    </feature>
+    <feature id="continuant">
+      <value id="continuant">
+        <base>m</base>
+        <base>ɱ</base>
+        <base>n</base>
+        <base>ɳ</base>
+        <base>ɲ</base>
+        <base>ŋ</base>
+        <base>ɴ</base>
+        <base>ɸ</base>
+        <base>β</base>
+        <base>f</base>
+        <base>v</base>
+        <base>θ</base>
+        <base>ð</base>
+        <base>s</base>
+        <base>z</base>
+        <base>ʃ</base>
+        <base>ʒ</base>
+        <base>ʂ</base>
+        <base>ʐ</base>
+        <base>ç</base>
+        <base>ʝ</base>
+        <base>x</base>
+        <base>ɣ</base>
+        <base>χ</base>
+        <base>ʁ</base>
+        <base>ħ</base>
+        <base>ʕ</base>
+        <base>h</base>
+        <base>ɦ</base>
+        <base>ɬ</base>
+        <base>ɮ</base>
+        <base>ʋ</base>
+        <base>ɹ</base>
+        <base>ɻ</base>
+        <base>j</base>
+        <base>ɰ</base>
+        <base>l</base>
+        <base>ɭ</base>
+        <base>ʎ</base>
+        <base>ʟ</base>
+        <base>i</base>
+        <base>y</base>
+        <base>ɨ</base>
+        <base>ʉ</base>
+        <base>ɯ</base>
+        <base>u</base>
+        <base>e</base>
+        <base>ø</base>
+        <base>ɘ</base>
+        <base>ɵ</base>
+        <base>ɤ</base>
+        <base>o</base>
+        <base>ə</base>
+        <base>ɛ</base>
+        <base>œ</base>
+        <base>ɜ</base>
+        <base>ɞ</base>
+        <base>ʌ</base>
+        <base>ɔ</base>
+        <base>a</base>
+        <base>ɶ</base>
+        <base>ɑ</base>
+        <base>ɒ</base>
+        <base>ʍ</base>
+        <base>w</base>
+        <base>ɥ</base>
+      </value>
+    </feature>
+    <feature id="coronal">
+      <value id="coronal">
+        <base>t</base>
+        <base>d</base>
+        <base>ʈ</base>
+        <base>ɖ</base>
+        <base>n</base>
+        <base>ɳ</base>
+        <base>r</base>
+        <base>ɾ</base>
+        <base>ɽ</base>
+        <base>θ</base>
+        <base>ð</base>
+        <base>s</base>
+        <base>z</base>
+        <base>ʃ</base>
+        <base>ʒ</base>
+        <base>ʂ</base>
+        <base>ʐ</base>
+        <base>ɬ</base>
+        <base>ɮ</base>
+        <base>ɹ</base>
+        <base>ɻ</base>
+        <base>l</base>
+        <base>ɭ</base>
+        <base>ǀ</base>
+        <base>ǃ</base>
+        <base>ǁ</base>
+        <base>ɗ</base>
+        <base>ɺ</base>
+        <base>ʣ</base>
+        <base>ʤ</base>
+        <base>ʦ</base>
+        <base>ʧ</base>
+      </value>
+    </feature>
+    <feature id="delayedrelease">
+      <value id="delayedrelease">
+        <base>ʣ</base>
+        <base>ʤ</base>
+        <base>ʦ</base>
+        <base>ʧ</base>
+      </value>
+    </feature>
+    <feature id="dental">
+      <value id="dental">
+        <base>ɱ</base>
+        <base>f</base>
+        <base>v</base>
+        <base>θ</base>
+        <base>ð</base>
+        <base>ʋ</base>
+        <base>ǀ</base>
+        <diacritic>0x032A</diacritic>
+      </value>
+    </feature>
+    <feature id="egressive">
+      <value id="egressive">
+        <base>p</base>
+        <base>b</base>
+        <base>t</base>
+        <base>d</base>
+        <base>ʈ</base>
+        <base>ɖ</base>
+        <base>c</base>
+        <base>ɟ</base>
+        <base>k</base>
+        <base>g</base>
+        <base>q</base>
+        <base>ɢ</base>
+        <base>ʔ</base>
+        <base>m</base>
+        <base>ɱ</base>
+        <base>n</base>
+        <base>ɳ</base>
+        <base>ɲ</base>
+        <base>ŋ</base>
+        <base>ɴ</base>
+        <base>ʙ</base>
+        <base>r</base>
+        <base>ʀ</base>
+        <base>ɾ</base>
+        <base>ɽ</base>
+        <base>ɸ</base>
+        <base>β</base>
+        <base>f</base>
+        <base>v</base>
+        <base>θ</base>
+        <base>ð</base>
+        <base>s</base>
+        <base>z</base>
+        <base>ʃ</base>
+        <base>ʒ</base>
+        <base>ʂ</base>
+        <base>ʐ</base>
+        <base>ç</base>
+        <base>ʝ</base>
+        <base>x</base>
+        <base>ɣ</base>
+        <base>χ</base>
+        <base>ʁ</base>
+        <base>ħ</base>
+        <base>ʕ</base>
+        <base>h</base>
+        <base>ɦ</base>
+        <base>ɬ</base>
+        <base>ɮ</base>
+        <base>ʋ</base>
+        <base>ɹ</base>
+        <base>ɻ</base>
+        <base>j</base>
+        <base>ɰ</base>
+        <base>l</base>
+        <base>ɭ</base>
+        <base>ʎ</base>
+        <base>ʟ</base>
+        <base>i</base>
+        <base>y</base>
+        <base>ɨ</base>
+        <base>ʉ</base>
+        <base>ɯ</base>
+        <base>u</base>
+        <base>e</base>
+        <base>ø</base>
+        <base>ɘ</base>
+        <base>ɵ</base>
+        <base>ɤ</base>
+        <base>o</base>
+        <base>ə</base>
+        <base>ɛ</base>
+        <base>œ</base>
+        <base>ɜ</base>
+        <base>ɞ</base>
+        <base>ʌ</base>
+        <base>ɔ</base>
+        <base>a</base>
+        <base>ɶ</base>
+        <base>ɑ</base>
+        <base>ɒ</base>
+        <base>ʍ</base>
+        <base>w</base>
+        <base>ɥ</base>
+        <base>ɺ</base>
+        <base>ʣ</base>
+        <base>ʤ</base>
+        <base>ʦ</base>
+        <base>ʧ</base>
+      </value>
+    </feature>
+    <feature id="fallingrisingtone">
+      <value id="fallingrisingtone">
+        <diacritic>0x030C</diacritic>
+      </value>
+    </feature>
+    <feature id="fallingtone">
+      <value id="fallingtone">
+        <diacritic>0x0300</diacritic>
+      </value>
+    </feature>
+    <feature id="glottalic">
+      <value id="">
+        <base>ɓ</base>
+        <base>ɗ</base>
+        <base>ʄ</base>
+        <base>ɠ</base>
+        <base>ʛ</base>
+        <space>’</space>
+      </value>
+    </feature>
+    <feature id="high">
+      <value id="high">
+        <base>c</base>
+        <base>ɟ</base>
+        <base>k</base>
+        <base>g</base>
+        <base>ɲ</base>
+        <base>ŋ</base>
+        <base>ʃ</base>
+        <base>ʒ</base>
+        <base>ç</base>
+        <base>ʝ</base>
+        <base>x</base>
+        <base>ɣ</base>
+        <base>j</base>
+        <base>ɰ</base>
+        <base>ʎ</base>
+        <base>ʟ</base>
+        <base>i</base>
+        <base>y</base>
+        <base>ɨ</base>
+        <base>ʉ</base>
+        <base>ɯ</base>
+        <base>u</base>
+        <base>e</base>
+        <base>ø</base>
+        <base>ɘ</base>
+        <base>ɵ</base>
+        <base>ɤ</base>
+        <base>o</base>
+        <base>ʄ</base>
+        <base>ɠ</base>
+        <base>ʍ</base>
+        <base>w</base>
+        <base>ɥ</base>
+        <base>ʤ</base>
+        <base>ʧ</base>
+      </value>
+    </feature>
+    <feature id="hightone">
+      <value id="hightone">
+        <diacritic>0x0304</diacritic>
+      </value>
+    </feature>
+    <feature id="lateral">
+      <value id="lateral">
+        <base>ɬ</base>
+        <base>ɮ</base>
+        <base>l</base>
+        <base>ɭ</base>
+        <base>ʎ</base>
+        <base>ʟ</base>
+        <base>ǁ</base>
+        <base>ɺ</base>
+      </value>
+    </feature>
+    <feature id="long">
+      <value id="long">
+        <base>ʙ</base>
+        <base>r</base>
+        <base>ʀ</base>
+        <space>ː</space>
+      </value>
+    </feature>
+    <feature id="low">
+      <value id="low">
+        <base>ħ</base>
+        <base>ʕ</base>
+        <base>ɛ</base>
+        <base>œ</base>
+        <base>ɜ</base>
+        <base>ɞ</base>
+        <base>ʌ</base>
+        <base>ɔ</base>
+        <base>a</base>
+        <base>ɶ</base>
+        <base>ɑ</base>
+        <base>ɒ</base>
+      </value>
+    </feature>
+    <feature id="lowtone">
+      <value id="lowtone">
+        <diacritic>0x0331</diacritic>
+      </value>
+    </feature>
+    <feature id="mid">
+      <value id="mid">
+        <base>e</base>
+        <base>ø</base>
+        <base>ɘ</base>
+        <base>ɵ</base>
+        <base>ɤ</base>
+        <base>o</base>
+        <base>ə</base>
+        <base>ɛ</base>
+        <base>œ</base>
+        <base>ɜ</base>
+        <base>ɞ</base>
+        <base>ʌ</base>
+        <base>ɔ</base>
+      </value>
+    </feature>
+    <feature id="nasal">
+      <value id="nasal">
+        <base>m</base>
+        <base>ɱ</base>
+        <base>n</base>
+        <base>ɳ</base>
+        <base>ɲ</base>
+        <base>ŋ</base>
+        <base>ɴ</base>
+        <diacritic>0x0303</diacritic>
+      </value>
+    </feature>
+    <feature id="palatalized">
+      <value id="palatalized">
+        <space>ʲ</space>
+      </value>
+    </feature>
+    <feature id="retroflex">
+      <value id="retroflex">
+        <base>ʈ</base>
+        <base>ɖ</base>
+        <base>ɳ</base>
+        <base>ɽ</base>
+        <base>ʂ</base>
+        <base>ʐ</base>
+        <base>ɻ</base>
+        <base>ɭ</base>
+        <base>ǃ</base>
+      </value>
+    </feature>
+    <feature id="risingfallingtone">
+      <value id="risingfallingtone">
+        <diacritic>0x0302</diacritic>
+      </value>
+    </feature>
+    <feature id="risingtone">
+      <value id="risingtone">
+        <diacritic>0x0301</diacritic>
+      </value>
+    </feature>
+    <feature id="rounded">
+      <default modifier="0x031C"/>
+      <value id="rounded">
+        <base>y</base>
+        <base>ʉ</base>
+        <base>u</base>
+        <base>ø</base>
+        <base>ɵ</base>
+        <base>o</base>
+        <base>œ</base>
+        <base>ɞ</base>
+        <base>ɔ</base>
+        <base>ɶ</base>
+        <base>ɒ</base>
+        <base>ʍ</base>
+        <base>w</base>
+        <base>ɥ</base>
+        <diacritic>0x0339</diacritic>
+      </value>
+    </feature>
+    <feature id="sonorant">
+      <value id="sonorant">
+        <base>m</base>
+        <base>ɱ</base>
+        <base>n</base>
+        <base>ɳ</base>
+        <base>ɲ</base>
+        <base>ŋ</base>
+        <base>ɴ</base>
+        <base>ʋ</base>
+        <base>ɹ</base>
+        <base>ɻ</base>
+        <base>j</base>
+        <base>ɰ</base>
+        <base>l</base>
+        <base>ɭ</base>
+        <base>ʎ</base>
+        <base>ʟ</base>
+        <base>i</base>
+        <base>y</base>
+        <base>ɨ</base>
+        <base>ʉ</base>
+        <base>ɯ</base>
+        <base>u</base>
+        <base>e</base>
+        <base>ø</base>
+        <base>ɘ</base>
+        <base>ɵ</base>
+        <base>ɤ</base>
+        <base>o</base>
+        <base>ə</base>
+        <base>ɛ</base>
+        <base>œ</base>
+        <base>ɜ</base>
+        <base>ɞ</base>
+        <base>ʌ</base>
+        <base>ɔ</base>
+        <base>a</base>
+        <base>ɶ</base>
+        <base>ɑ</base>
+        <base>ɒ</base>
+        <base>ʍ</base>
+        <base>w</base>
+        <base>ɥ</base>
+      </value>
+    </feature>
+    <feature id="syllabic">
+      <default modifier="0x032F"/>
+      <value id="syllabic">
+        <base>i</base>
+        <base>y</base>
+        <base>ɨ</base>
+        <base>ʉ</base>
+        <base>ɯ</base>
+        <base>u</base>
+        <base>e</base>
+        <base>ø</base>
+        <base>ɘ</base>
+        <base>ɵ</base>
+        <base>ɤ</base>
+        <base>o</base>
+        <base>ə</base>
+        <base>ɛ</base>
+        <base>œ</base>
+        <base>ɜ</base>
+        <base>ɞ</base>
+        <base>ʌ</base>
+        <base>ɔ</base>
+        <base>a</base>
+        <base>ɶ</base>
+        <base>ɑ</base>
+        <base>ɒ</base>
+        <diacritic>0x0329</diacritic>
+      </value>
+    </feature>
+    <feature id="velaric">
+      <value id="velaric">
+        <base>ʘ</base>
+        <base>ǀ</base>
+        <base>ǃ</base>
+        <base>ǁ</base>
+      </value>
+    </feature>
+    <feature id="vibration">
+      <value id="vibration">
+        <base>ʙ</base>
+        <base>r</base>
+        <base>ʀ</base>
+        <base>ɾ</base>
+        <base>ɽ</base>
+        <base>ɺ</base>
+      </value>
+    </feature>
+    <feature id="voiced">
+      <default modifier="0x0325"/>
+      <value id="voiced">
+        <base>b</base>
+        <base>d</base>
+        <base>ɖ</base>
+        <base>ɟ</base>
+        <base>g</base>
+        <base>ɢ</base>
+        <base>m</base>
+        <base>ɱ</base>
+        <base>n</base>
+        <base>ɳ</base>
+        <base>ɲ</base>
+        <base>ŋ</base>
+        <base>ɴ</base>
+        <base>ʙ</base>
+        <base>r</base>
+        <base>ʀ</base>
+        <base>ɾ</base>
+        <base>ɽ</base>
+        <base>β</base>
+        <base>v</base>
+        <base>ð</base>
+        <base>z</base>
+        <base>ʒ</base>
+        <base>ʐ</base>
+        <base>ʝ</base>
+        <base>ɣ</base>
+        <base>ʁ</base>
+        <base>ʕ</base>
+        <base>ɦ</base>
+        <base>ɮ</base>
+        <base>ʋ</base>
+        <base>ɹ</base>
+        <base>ɻ</base>
+        <base>j</base>
+        <base>ɰ</base>
+        <base>l</base>
+        <base>ɭ</base>
+        <base>ʎ</base>
+        <base>ʟ</base>
+        <base>i</base>
+        <base>y</base>
+        <base>ɨ</base>
+        <base>ʉ</base>
+        <base>ɯ</base>
+        <base>u</base>
+        <base>e</base>
+        <base>ø</base>
+        <base>ɘ</base>
+        <base>ɵ</base>
+        <base>ɤ</base>
+        <base>o</base>
+        <base>ə</base>
+        <base>ɛ</base>
+        <base>œ</base>
+        <base>ɜ</base>
+        <base>ɞ</base>
+        <base>ʌ</base>
+        <base>ɔ</base>
+        <base>a</base>
+        <base>ɶ</base>
+        <base>ɑ</base>
+        <base>ɒ</base>
+        <base>ɓ</base>
+        <base>ɗ</base>
+        <base>ʄ</base>
+        <base>ɠ</base>
+        <base>ʛ</base>
+        <base>w</base>
+        <base>ɥ</base>
+        <base>ɺ</base>
+        <base>ʣ</base>
+        <base>ʤ</base>
+        <diacritic>0x032C</diacritic>
+      </value>
+    </feature>
+  </phoneme_list>
+  <suprasegmental_list>
+    <feature id="pb">
+      <value id="pb">
+        <supra>|</supra>
+        <supra>‖</supra>
+      </value>
+    </feature>
+    <feature id="sb">
+      <value id="sb">
+        <supra>.</supra>
+        <supra>ˈ</supra>
+        <supra>ˌ</supra>
+        <supra>|</supra>
+        <supra>‖</supra>
+      </value>
+    </feature>
+    <feature id="sm">
+      <value id="sm">
+        <supra>ˈ</supra>
+        <supra>ˌ</supra>
+      </value>
+    </feature>
+    <feature id="ssb">
+      <value id="ssb">
+        <supra>‖</supra>
+      </value>
+    </feature>
+    <feature id="ssm">
+      <value id="ssm">
+        <supra>ˌ</supra>
+      </value>
+    </feature>
+  </suprasegmental_list>
+</data>

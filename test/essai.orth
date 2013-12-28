@@ -1,0 +1,7 @@
+[IPA to Script]
+A = a
+B = b
+
+[Script to IPA]
+\= = B
+O = A

@@ -1,0 +1,18 @@
+Dependencies (Debian packages):
+ocaml (>= 3.10)
+ocaml-findlib
+ocaml-ulex
+liblablgtk2-ocaml-dev
+libxml-light-ocaml-dev
+
+To compile:
+
+make dep
+
+then
+
+make (to compile bytecode)
+
+or
+
+make opt (to compile native code)
