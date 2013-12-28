@@ -1,0 +1,11 @@
+Zamel is a tool that permits to apply a set of phonetic transformation rules to a given lexicon. It is IPA based, but it also can use any user-provided printing scheme, using conversion rules. The program can be used either with CLI or with a GUI.
+
+It features a rather rich description language for rules that allows to formulate complicated patterns. The general form of a change rule is
+
+    X/Y/A_B
+
+where X is the source pattern, Y the result and A_B the context in which this rule is triggered. That is, whenever a word contains the pattern AXB, it is changed into AYB. For instance:
+
+    l/ʟ/_(<+sb>)[+consonantal-lateral]
+
+This rules indicates that 'l' should be changed into 'ʟ' in front of a consonantal which is not lateral. The (<+sb>) part stands for an optional suprasegmental syllabe break. More example rules can be found in the test/ directory.
