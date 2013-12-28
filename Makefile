@@ -49,4 +49,4 @@ clean:
 	rm -f parsing/*.cm[oix] parsing/*.o parsing/*_parser.ml parsing/*_parser.mli
 	rm -f gui/*.cm[oix] gui/*.o
 
-include .depend
+-include .depend
