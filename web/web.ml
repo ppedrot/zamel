@@ -1,24 +1,109 @@
 module Html = Dom_html
 
+let () = Ipadata.init "/static/ipadata.xml"
+
 (** Payload for the javascript document *)
+
+let to_ul doc f data =
+  let ans = Html.createUl doc in
+  let iter x =
+    let li = Html.createLi doc in
+    let display = f x in
+    Dom.appendChild li display;
+    Dom.appendChild ans li
+  in
+  let () = List.iter iter data in
+  ans
+
+class textView (doc : Html.document Js.t) =
+object
+  val obj = Html.createTextarea doc
+  method as_node = (obj :> Dom.node Js.t)
+
+  initializer
+    obj##cols <- 80;
+    obj##rows <- 15;
+    obj##setAttribute (Js.string "spellcheck", Js.string "false")
+end
+
+class lexicon (doc : Html.document Js.t) =
+object
+  inherit textView doc
+
+  initializer
+    obj##value <- Js.string (Sys_js.file_content "/static/latin.lex")
+
+  val mutable data = []
+
+  method data = data
+
+  method parse () =
+    let text = Js.to_string obj##value in
+    let dummy_lexbuf = Lexing.from_string "" in
+    try
+      let script = Converter.ipa_script in
+      let buf = Ulexing.from_utf8_string text in
+      let lexing = Word_lexer.main script buf in
+      let ans = Word_parser.parse lexing dummy_lexbuf in
+      data <- ans
+    with exn ->
+      ()
+(*       let line = dummy_lexbuf.Lexing.lex_curr_p.Lexing.pos_lnum in *)
+(*       lexing_error_box (Filename.basename f) line exn *)
+
+end
+
+class ruleset (doc : Html.document Js.t) =
+object
+  inherit textView doc
+  val mutable data = Data_set.create_ruleset [] [] [] []
+
+  initializer
+    obj##value <- Js.string (Sys_js.file_content "/static/ancient_french.sc")
+
+  method data = data
+
+  method parse () =
+    let text = Js.to_string obj##value in
+    let dummy_lexbuf = Lexing.from_string "" in
+    try
+      let script = Converter.ipa_script in
+      let buf = Ulexing.from_utf8_string text in
+      let lexing = Rule_lexer.main script buf in
+      let ans = Rule_parser.parse lexing dummy_lexbuf in
+      data <- ans
+    with exn ->
+      ()
+
+end
 
 let onload _  =
   let doc = Html.document in
   let body = doc##getElementById (Js.string "zamel") in
   let body = Js.Opt.case body (fun () -> assert false) (fun x -> x) in
   let div = Html.createDiv doc in
-  let display = Html.createP doc in
   let button = Html.createButton doc in
+  let lexicon = new lexicon doc in
+  let ruleset = new ruleset doc in
   let () = button##innerHTML <- (Js.string "Process") in
+  let () = Dom.appendChild body lexicon#as_node in
+  let () = Dom.appendChild body ruleset#as_node in
   let () = Dom.appendChild body button in
   let () = Dom.appendChild body div in
-  let () = Dom.appendChild div display in
-  let () = div##style##textAlign <- (Js.string "center") in
-  let () = div##style##fontSize <- (Js.string "200%") in
-  let () = div##style##fontFamily <- (Js.string "palatino, serif") in
-  let () = div##style##fontStyle <- (Js.string "italic") in
   let onclick _ =
-    let () = display##innerHTML <- (Js.string "foo") in
+    let () = lexicon#parse () in
+    let () = ruleset#parse () in
+    let result = Data_set.apply_set ruleset#data lexicon#data None None None () in
+    let map ans = match ans.Data_set.history with
+    | [] -> Html.createP doc
+    | (word, _, _) :: _ ->
+      let p = Html.createP doc in
+      let word = Data_set.represent_word Converter.ipa_script word in
+      p##innerHTML <- Js.string word;
+      p
+    in
+    let list = to_ul doc map result in
+    let () = Dom.appendChild div list in
     Js._true
   in
   let () = button##onclick <- Html.handler onclick in

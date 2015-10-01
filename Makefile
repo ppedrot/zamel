@@ -70,9 +70,12 @@ clean:
 	rm -f *.cm[oix] *.o
 	rm -f parsing/*.cm[oix] parsing/*.o parsing/*_parser.ml parsing/*_parser.mli
 	rm -f gui/*.cm[oix] gui/*.o
+	rm -f web/*.cm[oi] web/*.js
 
-web: $(BYTEFILES) $(WEBFILES)
-	$(OCAMLC) $(INCLUDES) $(WEBFILES) -package js_of_ocaml -linkpkg -o zamel
-	$(OCAMLJS) zamel
+web/zamel.js: $(BYTEFILES) $(WEBFILES)
+	$(OCAMLC) $(INCLUDES) $(BYTEFILES) $(WEBFILES) -package js_of_ocaml -linkpkg -o zamel
+	$(OCAMLJS) -I data -I test --extern-fs --file="latin.lex" --file="ancient_french.sc" --file="ipadata.xml" -o web/zamel.js zamel
+
+web: web/zamel.js
 
 -include .depend
