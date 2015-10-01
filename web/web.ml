@@ -1,13 +1,10 @@
 module Html = Dom_html
 
+open Widget
+
 let () = Ipadata.init "/static/ipadata.xml"
 
 (** Payload for the javascript document *)
-
-let label doc text =
-  let p = Html.createP doc in
-  p##innerHTML <- (Js.string text);
-  p
 
 class textView (doc : Html.document Js.t) =
 object
@@ -79,30 +76,28 @@ object
   method compute lexicon ruleset =
     let result = Data_set.apply_set ruleset lexicon None None None () in
     let of_binary word = Data_set.represent_word Converter.ipa_script word in
-    let map ans =
-      let src = label doc (of_binary ans.Data_set.original) in
+    let descr = Elt (Elt Nil) in
+    let table = new tree doc descr () in
+    let () = Dom.appendChild obj table#as_node in
+    let iter ans =
+      let src = new label doc ~label:(of_binary ans.Data_set.original) () in
       let dst = match ans.Data_set.history with
-      | [] -> Html.createP doc
-      | (word, _, _) :: _ -> label doc (of_binary word)
+      | [] -> new label doc ()
+      | (word, _, _) :: _ -> new label doc ~label:(of_binary word) ()
       in
-      (src, dst)
+      table#insert Here (((), src#as_element), dst#as_element)
+(*      let steps (word, rule, date) =
+        let tr = Html.createTr doc in
+        let label = new label doc ~label:(of_binary word) () in
+        Dom.appendChild tr label#as_node;
+        tr
+      in
+      (src, dst, List.rev_map steps ans.Data_set.history)*)
     in
-    let table = Html.createTable doc in
-    let iter x =
-      let tr = Html.createTr doc in
-      let (src, dst) = map x in
-      let tdl = Html.createTd doc in
-      let tdr = Html.createTd doc in
-      Dom.appendChild tdl src;
-      Dom.appendChild tdr dst;
-      Dom.appendChild tr tdl;
-      Dom.appendChild tr tdr;
-      Dom.appendChild table tr;
-    in
-    let () = List.iter iter result in
+    List.iter iter (List.rev result);
     Js.Opt.case (obj##firstChild)
-      (fun () -> Dom.appendChild obj table)
-      (fun child -> Dom.replaceChild obj table child)
+      (fun () -> Dom.appendChild obj table#as_node)
+      (fun child -> Dom.replaceChild obj table#as_node child)
 
 end
 

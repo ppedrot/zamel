@@ -24,7 +24,7 @@ parsing/converter_lexer.cmo
 
 GUIFILES=gui/dialog.cmo gui/gui_tools.cmo gui/save.cmo
 
-WEBFILES=web/web.cmo
+WEBFILES=web/widget.cmo web/web.cmo
 
 OPTFILES=$(BYTEFILES:.cmo=.cmx) $(GUIFILES:.cmo=.cmx)
 
@@ -33,6 +33,9 @@ unix.cma threads.cma gtkThread.cmo
 
 # Common rules
 web/%.cmo: web/%.ml
+	$(OCAMLC) $(OCAMLFLAGS) -package js_of_ocaml.syntax -package js_of_ocaml -c $<
+
+web/%.cmi: web/%.mli
 	$(OCAMLC) $(OCAMLFLAGS) -package js_of_ocaml.syntax -package js_of_ocaml -c $<
 
 gui/%.cmo: gui/%.ml
