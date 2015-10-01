@@ -8,7 +8,7 @@ OCAMLOPT=ocamlfind ocamlopt -w s -syntax "camlp4o" -package threads -thread -pac
 
 OCAMLDEP=ocamlfind ocamldep -syntax "camlp4o" -package ulex
 
-JSOFOCAML=js_of_ocaml
+OCAMLJS=js_of_ocaml
 
 INCLUDES=-I parsing -I gui -I web
 
@@ -73,5 +73,6 @@ clean:
 
 web: $(BYTEFILES) $(WEBFILES)
 	$(OCAMLC) $(INCLUDES) $(WEBFILES) -package js_of_ocaml -linkpkg -o zamel
+	$(OCAMLJS) zamel
 
 -include .depend
