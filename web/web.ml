@@ -4,16 +4,10 @@ let () = Ipadata.init "/static/ipadata.xml"
 
 (** Payload for the javascript document *)
 
-let to_ul doc f data =
-  let ans = Html.createUl doc in
-  let iter x =
-    let li = Html.createLi doc in
-    let display = f x in
-    Dom.appendChild li display;
-    Dom.appendChild ans li
-  in
-  let () = List.iter iter data in
-  ans
+let label doc text =
+  let p = Html.createP doc in
+  p##innerHTML <- (Js.string text);
+  p
 
 class textView (doc : Html.document Js.t) =
 object
@@ -77,33 +71,58 @@ object
 
 end
 
+class results (doc : Html.document Js.t) =
+object
+  val obj = Html.createDiv doc
+  method as_node = (obj :> Dom.node Js.t)
+
+  method compute lexicon ruleset =
+    let result = Data_set.apply_set ruleset lexicon None None None () in
+    let of_binary word = Data_set.represent_word Converter.ipa_script word in
+    let map ans =
+      let src = label doc (of_binary ans.Data_set.original) in
+      let dst = match ans.Data_set.history with
+      | [] -> Html.createP doc
+      | (word, _, _) :: _ -> label doc (of_binary word)
+      in
+      (src, dst)
+    in
+    let table = Html.createTable doc in
+    let iter x =
+      let tr = Html.createTr doc in
+      let (src, dst) = map x in
+      let tdl = Html.createTd doc in
+      let tdr = Html.createTd doc in
+      Dom.appendChild tdl src;
+      Dom.appendChild tdr dst;
+      Dom.appendChild tr tdl;
+      Dom.appendChild tr tdr;
+      Dom.appendChild table tr;
+    in
+    let () = List.iter iter result in
+    Js.Opt.case (obj##firstChild)
+      (fun () -> Dom.appendChild obj table)
+      (fun child -> Dom.replaceChild obj table child)
+
+end
+
 let onload _  =
   let doc = Html.document in
   let body = doc##getElementById (Js.string "zamel") in
   let body = Js.Opt.case body (fun () -> assert false) (fun x -> x) in
-  let div = Html.createDiv doc in
   let button = Html.createButton doc in
   let lexicon = new lexicon doc in
   let ruleset = new ruleset doc in
+  let results = new results doc in
   let () = button##innerHTML <- (Js.string "Process") in
   let () = Dom.appendChild body lexicon#as_node in
   let () = Dom.appendChild body ruleset#as_node in
   let () = Dom.appendChild body button in
-  let () = Dom.appendChild body div in
+  let () = Dom.appendChild body results#as_node in
   let onclick _ =
     let () = lexicon#parse () in
     let () = ruleset#parse () in
-    let result = Data_set.apply_set ruleset#data lexicon#data None None None () in
-    let map ans = match ans.Data_set.history with
-    | [] -> Html.createP doc
-    | (word, _, _) :: _ ->
-      let p = Html.createP doc in
-      let word = Data_set.represent_word Converter.ipa_script word in
-      p##innerHTML <- Js.string word;
-      p
-    in
-    let list = to_ul doc map result in
-    let () = Dom.appendChild div list in
+    let () = results#compute lexicon#data ruleset#data in
     Js._true
   in
   let () = button##onclick <- Html.handler onclick in
