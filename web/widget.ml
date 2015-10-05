@@ -65,11 +65,11 @@ let rec to_list : type a. a descr -> a -> Html.element Js.t list = function
 class ['a] row doc (descr : 'a descr) cells =
 let row = Html.createTr doc in
 let handle = Html.createTd doc in
+let anchor = Html.createA doc in
 object
   inherit widget doc row
-  val handle = new widget doc handle
 
-  method handle = handle#as_element
+  method handle = new widget doc anchor
 
   initializer
     let cells = to_list descr cells in
@@ -78,13 +78,12 @@ object
       Dom.appendChild cell elt;
       Dom.appendChild row cell;
     in
-    let anchor = Html.createA doc in
     anchor##href <- Js.string "#";
     anchor##innerHTML <- Js.string "▸";
     anchor##className <- Js.string "mlui-tree-anchor";
-    Dom.appendChild handle#as_node anchor;
-    handle#as_element##style##paddingRight <- Js.string "1em";
-    Dom.appendChild row handle#as_node;
+    Dom.appendChild handle anchor;
+    handle##style##paddingRight <- Js.string "1em";
+    Dom.appendChild row handle;
     List.iter iter (List.rev cells);
     row##className <- Js.string "mlui-tree-row";
 end
@@ -101,6 +100,7 @@ object (self)
     cols <- update path up cols;
     let f pos =
       let row = new row doc descr v in
+      row#handle#as_element##onclick <- Html.handler (fun _ -> row#hide (); Js._false);
       Dom.insertBefore obj row#as_node pos
     in
     iter path f (obj##firstChild)
@@ -120,5 +120,51 @@ object (self)
 
   initializer
     obj##className <- Js.string "mlui-tree";
+
+end
+
+class notebook doc () =
+let obj = Html.createDiv doc in
+let bar = Html.createDiv doc in
+let box = Html.createDiv doc in
+object (self)
+  val mutable id = 0
+  val mutable panels : (int * Html.element Js.t) list = []
+  val mutable labels : (int * Html.anchorElement Js.t) list = []
+  inherit widget doc obj
+
+  method private select_id id =
+    let iter (uid, obj) =
+      let cl = Js.string "mlui-notebook-tab-hidden" in
+      if id = uid then obj##classList##remove (cl)
+      else obj##classList##add (cl)
+    in
+    List.iter iter panels;
+    let iter (uid, obj) =
+      let cl = Js.string "mlui-notebook-label-selected" in
+      if id = uid then obj##classList##add (cl)
+      else obj##classList##remove (cl)
+    in
+    List.iter iter labels;
+
+  method insert ?(label = "") widget =
+    let anchor = Html.createA doc in
+    let nid = id + 1 in
+    id <- nid;
+    anchor##innerHTML <- (Js.string label);
+    anchor##href <- (Js.string "#");
+    panels <- (nid, widget) :: panels;
+    labels <- (nid, anchor) :: labels;
+    let onclick _ = self#select_id nid; Js._false in
+    anchor##onclick <- Html.handler onclick;
+    anchor##className <- Js.string "mlui-notebook-label";
+    Dom.appendChild box widget;
+    Dom.appendChild bar anchor;
+    self#select_id 1
+
+  initializer
+    obj##className <- Js.string "mlui-notebook";
+    Dom.appendChild obj bar;
+    Dom.appendChild obj box;
 
 end

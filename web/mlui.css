@@ -7,6 +7,30 @@
   margin: 0;
 }
 
+.mlui-notebook-label:link, .mlui-notebook-label:visited {
+  color:Black;
+  padding: 5px 15px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 100%;
+  display: inline-block;
+}
+
+.mlui-notebook-label:hover, .mlui-notebook-label:active
+{
+  background-color: LightGray;
+}
+
+.mlui-notebook-label-selected {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+.mlui-notebook-tab-hidden {
+  display: none;
+}
+
 .mlui-tree {
   border-collapse: collapse;
 }

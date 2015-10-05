@@ -7,9 +7,10 @@ let () = Ipadata.init "/static/ipadata.xml"
 (** Payload for the javascript document *)
 
 class textView (doc : Html.document Js.t) =
+let obj = Html.createTextarea doc in
 object
-  val obj = Html.createTextarea doc
-  method as_node = (obj :> Dom.node Js.t)
+  inherit Widget.widget doc obj
+  val obj = obj
 
   initializer
     obj##cols <- 80;
@@ -69,9 +70,9 @@ object
 end
 
 class results (doc : Html.document Js.t) =
+let obj = Html.createDiv doc in
 object
-  val obj = Html.createDiv doc
-  method as_node = (obj :> Dom.node Js.t)
+  inherit Widget.widget doc obj
 
   method compute lexicon ruleset =
     let result = Data_set.apply_set ruleset lexicon None None None () in
@@ -109,11 +110,13 @@ let onload _  =
   let lexicon = new lexicon doc in
   let ruleset = new ruleset doc in
   let results = new results doc in
+  let notetab = new notebook doc () in
+  let () = notetab#insert ~label:"Lexicon" lexicon#as_element in
+  let () = notetab#insert ~label:"Rules" ruleset#as_element in
+  let () = notetab#insert ~label:"Results" results#as_element in
   let () = button##innerHTML <- (Js.string "Process") in
-  let () = Dom.appendChild body lexicon#as_node in
-  let () = Dom.appendChild body ruleset#as_node in
+  let () = Dom.appendChild body notetab#as_node in
   let () = Dom.appendChild body button in
-  let () = Dom.appendChild body results#as_node in
   let onclick _ =
     let () = lexicon#parse () in
     let () = ruleset#parse () in

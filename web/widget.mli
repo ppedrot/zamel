@@ -35,3 +35,9 @@ object
   method insert : path -> 'a -> unit
   method set : path -> 'a -> unit
 end
+
+class notebook : document -> unit ->
+object
+  inherit widget
+  method insert : ?label:string -> Dom_html.element Js.t -> unit
+end
