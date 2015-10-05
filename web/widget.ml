@@ -7,8 +7,8 @@ object
   val document = doc
   method as_node = (obj :> Dom.node Js.t)
   method as_element = (obj :> Html.element Js.t)
-  method show () = obj##style##display <- Js.string "auto"
-  method hide () = obj##style##display <- Js.string "none"
+  method show () = obj##classList##remove (Js.string "mlui-hidden")
+  method hide () = obj##classList##add (Js.string "mlui-hidden")
 end
 
 class label doc ?label () =
@@ -19,7 +19,9 @@ object (self)
   method set_label s = obj##innerHTML <- Js.string s
 
   initializer
-    match label with None -> () | Some s -> self#set_label s
+    begin match label with None -> () | Some s -> self#set_label s end;
+    obj##className <- Js.string "mlui-label";
+
 end
 
 type 'a elt =
@@ -60,18 +62,32 @@ let rec to_list : type a. a descr -> a -> Html.element Js.t list = function
 | Nil -> fun () -> []
 | Elt descr -> fun (row, e) -> (e :> Html.element Js.t) :: to_list descr row
 
-let as_row doc descr cells =
-  let cells = to_list descr cells in
-  let row = Html.createTr doc in
-  let iter elt =
-    let cell = Html.createTd doc in
-    Dom.appendChild cell elt;
-    Dom.appendChild row cell;
-  in
-  List.iter iter cells;
-  row
+class ['a] row doc (descr : 'a descr) cells =
+let row = Html.createTr doc in
+let handle = Html.createTd doc in
+object
+  inherit widget doc row
+  val handle = new widget doc handle
 
-(* "▶" *)
+  method handle = handle#as_element
+
+  initializer
+    let cells = to_list descr cells in
+    let iter elt =
+      let cell = Html.createTd doc in
+      Dom.appendChild cell elt;
+      Dom.appendChild row cell;
+    in
+    let anchor = Html.createA doc in
+    anchor##href <- Js.string "#";
+    anchor##innerHTML <- Js.string "▸";
+    anchor##className <- Js.string "mlui-tree-anchor";
+    Dom.appendChild handle#as_node anchor;
+    handle#as_element##style##paddingRight <- Js.string "1em";
+    Dom.appendChild row handle#as_node;
+    List.iter iter (List.rev cells);
+    row##className <- Js.string "mlui-tree-row";
+end
 
 class ['a] tree doc (descr : 'a descr) () =
 let obj = Html.createTable doc in
@@ -84,8 +100,8 @@ object (self)
     let up data = Node (v, []) :: data in
     cols <- update path up cols;
     let f pos =
-      let row = as_row doc descr v in
-      Dom.insertBefore obj row pos
+      let row = new row doc descr v in
+      Dom.insertBefore obj row#as_node pos
     in
     iter path f (obj##firstChild)
 
@@ -96,11 +112,13 @@ object (self)
     in
     cols <- update path up cols;
     let f pos =
-      let row = as_row doc descr v in
+      let row = new row doc descr v in
       let pos = Js.Opt.get pos (fun () -> assert false) in
-      Dom.replaceChild obj row pos
+      Dom.replaceChild obj row#as_node pos
     in
     iter path f (obj##firstChild)
 
+  initializer
+    obj##className <- Js.string "mlui-tree";
 
 end

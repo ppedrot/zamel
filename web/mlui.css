@@ -1,0 +1,25 @@
+.mlui-hidden {
+  height: 0;
+  overflow: hidden;
+}
+
+.mlui-label {
+  margin: 0;
+}
+
+.mlui-tree {
+  border-collapse: collapse;
+}
+
+.mlui-tree-row:nth-child(odd) {
+}
+
+.mlui-tree-row:nth-child(even) {
+  background-color: LightSkyBlue;
+}
+
+.mlui-tree-anchor {
+  background-color: inherit;
+  color: black;
+  text-decoration: none;
+}
