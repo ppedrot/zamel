@@ -4,6 +4,7 @@
 }
 
 .mlui-label {
+  padding: 0;
   margin: 0;
 }
 
@@ -37,10 +38,19 @@
 }
 
 .mlui-tree-row:nth-child(odd) {
+  background-color: white;
 }
 
 .mlui-tree-row:nth-child(even) {
   background-color: LightSkyBlue;
+}
+
+.mlui-tree-row :not(:last-child) {
+  white-space: nowrap;
+}
+
+.mlui-tree-row :last-child {
+  width: 99%;
 }
 
 .mlui-tree-anchor {
