@@ -70,23 +70,20 @@ object
 end
 
 class results (doc : Html.document Js.t) =
-let obj = Html.createDiv doc in
-object
-  inherit Widget.widget doc obj
+let descr = Elt (Elt Nil) in
+object (self)
+  inherit [(unit * Html.element Js.t) * Html.element Js.t] tree doc descr ()
 
   method compute lexicon ruleset =
     let result = Data_set.apply_set ruleset lexicon None None None () in
     let of_binary word = Data_set.represent_word Converter.ipa_script word in
-    let descr = Elt (Elt Nil) in
-    let table = new tree doc descr () in
-    let () = Dom.appendChild obj table#as_node in
     let iter ans =
       let src = new label doc ~label:(of_binary ans.Data_set.original) () in
       let dst = match ans.Data_set.history with
       | [] -> new label doc ()
       | (word, _, _) :: _ -> new label doc ~label:(of_binary word) ()
       in
-      table#insert Here (((), src#as_element), dst#as_element)
+      self#insert Here (((), src#as_element), dst#as_element)
 (*      let steps (word, rule, date) =
         let tr = Html.createTr doc in
         let label = new label doc ~label:(of_binary word) () in
@@ -96,9 +93,6 @@ object
       (src, dst, List.rev_map steps ans.Data_set.history)*)
     in
     List.iter iter (List.rev result);
-    Js.Opt.case (obj##firstChild)
-      (fun () -> Dom.appendChild obj table#as_node)
-      (fun child -> Dom.replaceChild obj table#as_node child)
 
 end
 
